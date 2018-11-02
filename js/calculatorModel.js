@@ -29,10 +29,11 @@ function Model() {
         
         unaryOperationKeyPressed(value) {
             if (this.currentOperand === "ERROR") {
-                return;
-            }
-            this.currentOperand = Number.parseFloat(this.currentOperand) / 100;
-            this.resetModel();
+                // do nothing
+            } else {
+                this.currentOperand = Number.parseFloat(this.currentOperand) / 100;
+                this.resetModel();
+            };    
             this.lastKeyPressed = value;
         },
 
@@ -66,7 +67,7 @@ function Model() {
                 this.currentOperand = "ERROR";
                 this.resetModel();
             } else if (this.previousOperand === null && this.currentOperation === null){
-                
+                //leave currentOperand unchanged
             } else if (this.currentOperation === "/" && this.currentOperand === "0") {
                 this.currentOperand = "ERROR";
                 this.previousOperand = null;
